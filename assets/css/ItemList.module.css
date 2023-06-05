@@ -1,0 +1,9 @@
+.lists {
+  padding: 0;
+}
+.lists .list {
+  list-style: none;
+  padding: 8px;
+  border: solid 2px;
+  margin-bottom: 2px;
+}

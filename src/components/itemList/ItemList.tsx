@@ -1,5 +1,6 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
+import styles from './ItemList.module.scss'
 
 type TodoType = {
   userId: number
@@ -50,9 +51,11 @@ const ItemList = (): JSX.Element => {
     <div>
       <button onClick={onTodoButtonClick}>Todos</button>
       <button onClick={onPostButtonClick}>Posts</button>
-      <ul>
+      <ul className={styles.lists}>
         {items.map((item) => (
-          <li key={item.id}>{item.title}</li>
+          <li className={styles.list} key={item.id}>
+            {item.title}
+          </li>
         ))}
       </ul>
     </div>
