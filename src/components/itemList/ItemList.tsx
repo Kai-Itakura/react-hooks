@@ -54,7 +54,7 @@ const ItemList = (): JSX.Element => {
       <ul className={styles.lists}>
         {items.map((item) => (
           <li className={styles.list} key={item.id}>
-            {item.title}
+            <p>「{item.title}」</p>
           </li>
         ))}
       </ul>
