@@ -1,0 +1,12 @@
+.App {
+  text-align: center;
+  margin-top: 32px;
+}
+.App .itemList {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+.App .itemList .item {
+  margin-right: 16px;
+}
