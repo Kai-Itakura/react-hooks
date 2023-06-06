@@ -1,41 +1,65 @@
-import { useCallback, useState } from 'react'
-import './App.scss'
+import React, { useMemo, useState } from 'react'
+import styles from './App.module.scss'
 import Title from './components/Title/Title'
-import Button from './components/button/Button'
-import Counter from './components/counter/Counter'
-import SubTitle from './components/subTitle/SubTitle'
 
-function App(): JSX.Element {
-  const [countA, setCountA] = useState<number>(0)
-  const [countB, setCountB] = useState<number>(0)
+const App = (): JSX.Element => {
+  const [count, setCount] = useState<number>(1)
+  const [userName, setUserName] = useState<string>('')
 
-  // useCallbackでメモ化
-  const handelCountUpA = useCallback(() => {
-    setCountA((prevCount) => prevCount + 1)
-  }, [])
+  const exponentiation = useMemo(() => {
+    return heavyExponentiationFunction(count)
+  }, [count])
 
-  const handelCountUpB = useCallback(() => {
-    setCountB((prevCount) => prevCount + 1)
-  }, [])
-
-  console.log('-----------------------')
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    if (userName === '') {
+      alert('ユーザー名を入力してください')
+    } else {
+      alert(`ユーザー名： ${userName}`)
+      setUserName('')
+    }
+  }
 
   return (
-    <div className='App'>
-      <Title titleText={'#6 useCallback'} />
-      <SubTitle subTitleText={'緊急アンケート: あなたはA派？それともB派？'} />
-      <div className='itemList'>
-        <div className='item'>
-          <Counter counterTitle={'A派'} count={countA} />
-          <Button buttonText='もちろんA派！' onClick={handelCountUpA} />
+    <div className={styles.app}>
+      <Title titleText={'#7 useMemo'} />
+      <div className={styles.content}>
+        <div className={styles.counter}>
+          <button
+            className={styles.incrementButton}
+            onClick={() => {
+              setCount(count + 1)
+            }}
+          >
+            {count}
+          </button>
+          のべき乗は”{exponentiation}”
         </div>
-        <div className='item'>
-          <Counter counterTitle={'B派'} count={countB} />
-          <Button buttonText='もちろんB派！' onClick={handelCountUpB} />
-        </div>
+        <form className={styles.form} onSubmit={(e) => handleSubmit(e)}>
+          <label className={styles.label}>ユーザー名</label>
+          <input
+            className={styles.input}
+            value={userName}
+            onChange={(e) => {
+              setUserName(e.target.value)
+            }}
+          />
+          <button className={styles.submitButton} type='submit'>
+            送信する
+          </button>
+        </form>
       </div>
     </div>
   )
+}
+
+const heavyExponentiationFunction = (count: number) => {
+  let i = 0
+  while (i < 10000) {
+    console.log(i)
+    i++
+  }
+  return count ** 2
 }
 
 export default App
