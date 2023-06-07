@@ -6,36 +6,37 @@
   margin-top: 32px;
 }
 .app .content {
-  align-items: center;
+  width: 20vw;
+}
+.app .content .itemList {
   display: flex;
   flex-direction: column;
-  max-width: 400px;
+  align-items: center;
+  font-size: large;
+  width: 100%;
 }
-.app .content .counter {
-  display: flex;
-  font-size: 24px;
-  justify-content: center;
-  margin-bottom: 24px;
+.app .content .itemList .ul {
+  width: 100%;
+  word-break: break-all;
 }
-.app .content .counter .incrementButton {
-  font-size: 24px;
-  cursor: pointer;
+.app .content .itemList .ul .li {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 8px;
+  width: 100%;
 }
 .app .content .form {
   display: flex;
   flex-direction: column;
+  align-items: flex-end;
+  margin-top: 32px;
 }
-.app .content .form .label {
-  font-family: "Courier New", Courier, monospace;
-  font-size: 16px;
+.app .content .form .textarea {
+  width: 100%;
+  box-sizing: border-box;
+  resize: none;
 }
-.app .content .form .input {
-  font-size: 16px;
-  margin-bottom: 8px;
-  padding: 8px;
-}
-.app .content .form .submitButton {
-  font-family: "Courier New", Courier, monospace;
-  font-size: 16px;
-  padding: 4px;
+.app .content .form .button {
+  margin-top: 16px;
+  width: 25%;
 }
